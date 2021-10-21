@@ -20,14 +20,13 @@ public class ScaleKnife : MonoBehaviour
     }
     private void SpawnGround()
     {
-        Vector3 centerPos = new Vector3(_endPos.position.x, _endPos.position.y, _endPos.position.z);
 
-        float scaleZ = Vector3.Distance(_startPos.position, _endPos.position);
+        float scaleZ =- Vector3.Distance(_startPos.position, _endPos.position);
         float scaleX =  1f;
         float scaleY = 1f;
 
-        _knife.transform.position = centerPos;
-        _knife.transform.LookAt(_startPos);
-        _knife.transform.localScale = new Vector3(scaleX , scaleY, -scaleZ);
+        _knife.position = _endPos.position;
+        _knife.LookAt(_startPos);
+        _knife.localScale = new Vector3(scaleX , scaleY, scaleZ);
     }
 }

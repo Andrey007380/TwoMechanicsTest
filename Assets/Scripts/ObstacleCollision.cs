@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleCollision : ColosionAction
+public class ObstacleCollision : CollisionAction
 {
     protected override void MakeAction(Collider other)
     {
