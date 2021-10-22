@@ -10,10 +10,13 @@ public class IdleState : State
 
     public override IEnumerator Idle()
     {
-        
-        yield return new WaitForSeconds(1f);
+        while (true)
+        {
         _baseAI.Animator.Play("Idle");
-         Debug.Log("Idle");
+        yield return new WaitUntil(() => _baseAI.MeshAgent.remainingDistance <= _baseAI.MeshAgent.stoppingDistance);
         _baseAI.ApplyState(new AttackState(_baseAI));
+         break;
+        }
+        
     }
 }

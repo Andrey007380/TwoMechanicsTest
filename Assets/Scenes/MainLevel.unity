@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -283,6 +287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -448,6 +456,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -553,6 +565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -570,6 +586,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8590073505303512529, guid: 12ac94814e31c49bbbb8db1bb85ba6d1, type: 3}
       propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575911548743161203, guid: 12ac94814e31c49bbbb8db1bb85ba6d1, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8503199859288919900, guid: 12ac94814e31c49bbbb8db1bb85ba6d1, type: 3}
@@ -698,6 +718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -782,6 +806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -845,6 +873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -1148,6 +1180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -1211,6 +1247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -1295,6 +1335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -1379,6 +1423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -1442,6 +1490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -1505,6 +1557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -1522,6 +1578,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8590073505303512529, guid: 12ac94814e31c49bbbb8db1bb85ba6d1, type: 3}
       propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575911548743161203, guid: 12ac94814e31c49bbbb8db1bb85ba6d1, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8503199859288919900, guid: 12ac94814e31c49bbbb8db1bb85ba6d1, type: 3}
@@ -1637,6 +1697,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -1791,6 +1855,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!20 &1251209738 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 682305345662037951, guid: bfadf38f4655b4473b577f6e6d0ea0e4, type: 3}
+  m_PrefabInstance: {fileID: 682305345034951591}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1304360707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1846,6 +1915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -1951,6 +2024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -2102,6 +2179,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -2169,6 +2250,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
 --- !u!4 &1723627949 stripped
@@ -2324,6 +2409,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -2481,6 +2570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -2570,6 +2663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -2633,6 +2730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -2759,6 +2860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
@@ -2822,6 +2927,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cutObj 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8785630851732015156, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1251209738}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f319c5cf3c7246de9691145a4c3c2f6, type: 3}
 --- !u!4 &543450652544284731 stripped
@@ -2891,6 +3000,10 @@ PrefabInstance:
     - target: {fileID: 682305346072022513, guid: bfadf38f4655b4473b577f6e6d0ea0e4, type: 3}
       propertyPath: m_Shadows.m_Strength
       value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 871904099374456651, guid: bfadf38f4655b4473b577f6e6d0ea0e4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2925420961905042888, guid: bfadf38f4655b4473b577f6e6d0ea0e4, type: 3}
       propertyPath: m_LocalPosition.y

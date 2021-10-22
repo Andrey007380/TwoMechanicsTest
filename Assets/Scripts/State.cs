@@ -15,4 +15,5 @@ public abstract class State
     public virtual IEnumerator Chase() { yield break; }
     public virtual IEnumerator Idle() { yield break; }
 
+
 }

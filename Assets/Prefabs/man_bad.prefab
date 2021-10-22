@@ -64,6 +64,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2514757359361549801, guid: 976cce5313b39324e83d32c9829cd7d1, type: 3}
     - target: {fileID: 7807804262546134601, guid: 6b5d591dbb72ac04a80d42bbb710cb7a, type: 3}
+      propertyPath: EnemyDetection
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807804262546134601, guid: 6b5d591dbb72ac04a80d42bbb710cb7a, type: 3}
       propertyPath: redAgent.m_Bits
       value: 2048
       objectReference: {fileID: 0}

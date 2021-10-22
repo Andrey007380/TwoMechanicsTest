@@ -4,41 +4,40 @@ using UnityEngine;
 public class AttackState : State
 {
     public AttackState(BaseAI baseAI) : base(baseAI) {}
-    List<Transform> enemies;
     public override IEnumerator Attack()
     {
-        yield return new WaitForSeconds(1f);
-
-        _baseAI.MeshAgent.SetDestination(GetClosestEnemy().position);
-        _baseAI.Animator.Play("Run");
-        Debug.Log("Attack");
-
-       
-    }
-   private Transform GetClosestEnemy()
-    {
-        
-
-        Transform bestTarget = null;
-        float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = _baseAI.transform.position;
-
-        foreach (Collider collider in _baseAI.TargetInRadius)
+        while (true)
         {
-            enemies.Add(collider.transform);
-            foreach (Transform potentialTarget in enemies)
+
+        _baseAI.TargetInRadius = Physics.OverlapSphere(_baseAI.MeshAgent.transform.position, _baseAI.EnemyDetection, _baseAI.attackMask);
+
+        yield return null /*WaitUntil(() => _baseAI.MeshAgent.remainingDistance <= _baseAI.MeshAgent.stoppingDistance)*/;
+        _baseAI.MeshAgent.SetDestination(GetNewTarget(_baseAI.TargetInRadius).position);
+        _baseAI.Animator.Play("Run");
+
+
+        Transform GetNewTarget(Collider[] colliders)
+        {
+            Transform bestTarget = null;
+            float closestDistanceSqr = Mathf.Infinity;
+            Vector3 currentPosition = _baseAI.transform.position;
+
+            foreach (Collider potentialTarget in colliders)
             {
-                Vector3 directionToTarget = potentialTarget.position - currentPosition;
+                Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
                 float dSqrToTarget = directionToTarget.sqrMagnitude;
                 if (dSqrToTarget < closestDistanceSqr)
                 {
                     closestDistanceSqr = dSqrToTarget;
-                    bestTarget = potentialTarget;
+                    bestTarget = potentialTarget.transform;
                 }
             }
-
+            return bestTarget;
         }
-        Debug.Log(bestTarget.position);
-        return bestTarget;
+
+            break;
+        }
+      
     }
+
 }

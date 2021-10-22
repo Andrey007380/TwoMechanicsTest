@@ -13,7 +13,7 @@ public class CollisionAction : MonoBehaviour
     public delegate void AllObjectsDestroyedDelegate(GameObject InstantiatedGameobject);
     public static event AllObjectsDestroyedDelegate OnEmptyAvailableObjecrts;
 
-    [SerializeField] private List<GameObject> Listofavailableobjects = new List<GameObject>();
+    private List<GameObject> _listofavailableobjects = new List<GameObject>();
 
     public delegate void InstantiateDelegate(GameObject InstantiatedGameobject);
     public static event InstantiateDelegate OnInstantiate;
@@ -22,7 +22,7 @@ public class CollisionAction : MonoBehaviour
     {
         foreach (var item in FindObjectsOfType<CollisionAction>())
         {
-            Listofavailableobjects.Add(item.gameObject);
+            _listofavailableobjects.Add(item.gameObject);
         }
     }
 
@@ -35,23 +35,22 @@ public class CollisionAction : MonoBehaviour
     }
     virtual protected void MakeAction(Collider other)
     {
-        Destroy(gameObject);
-        GameObject instantiated= Instantiate(_bluehuman, gameObject.transform.position, Quaternion.identity);
-
+        GameObject instantiated = Instantiate(_bluehuman, gameObject.transform.position, Quaternion.identity);
         OnInstantiate(instantiated);
+
+        Destroy(gameObject);
         OnEmptyAvailableObjecrts(gameObject);
 
-        if(Listofavailableobjects.Count < 20 || Listofavailableobjects.Count == 0) {  
-        OnAllObjectsDestroyed();
+        if (_listofavailableobjects.Count < 20)
+        {
+            OnAllObjectsDestroyed();
         }
+
     }
 
     private void OnEnable() => OnEmptyAvailableObjecrts += Remove;
     private void OnDisable() => OnEmptyAvailableObjecrts -= Remove;
 
-    private void Remove(GameObject gameObject)
-    {
-        Listofavailableobjects.Remove(gameObject);
-    }
+    private void Remove(GameObject gameObject) => _listofavailableobjects.Remove(gameObject);
 
 }

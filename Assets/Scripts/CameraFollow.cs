@@ -66,4 +66,5 @@ public class CameraFollow : MonoBehaviour
     {
         CollisionAction.OnInstantiate += Targets.Add;
     }
+    
 }

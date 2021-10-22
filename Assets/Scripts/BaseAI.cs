@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class BaseAI : MonoBehaviour
 
     public NavMeshAgent MeshAgent;
     public Animator Animator;
+    public ParticleSystem ParticleSystem;
     public float EnemyDetection;
     public LayerMask attackMask;
 
@@ -21,42 +23,44 @@ public class BaseAI : MonoBehaviour
 
     private void Awake()
     {
+        ParticleSystem = GetComponent<ParticleSystem>();
         Animator = GetComponent<Animator>();
         MeshAgent = GetComponent<NavMeshAgent>();
-
     }
 
     private void Start() => ApplyState(new ChaseState(this));
     public void ApplyState(State state)
     {
-            _currentState = state;
-            StartCoroutine(_currentState.Chase());  
+        _currentState = state;
+        StartCoroutine(_currentState.Chase());  
     }
-
-    public void Attack() => StartCoroutine(_currentState.Attack());
-    public void Idle()
-    {
-        if (!_currentState.Equals(null))
-        {
-            StartCoroutine(_currentState.Idle());
-        }
-        else
-        {
-             Debug.Log("Error");
-        }
-    }
-
     public void Chase() => StartCoroutine(_currentState.Chase());
+    public void Idle() => StartCoroutine(_currentState.Idle());
+    public void Attack() => StartCoroutine(_currentState.Attack());
+   
     private void OnEnable()
     {
         CollisionAction.OnAllObjectsDestroyed += Attack;
-        ChaseState.OnReachPosition += Idle;
     }
 
     private void OnDisable()
     {
         CollisionAction.OnAllObjectsDestroyed -= Attack;
-        ChaseState.OnReachPosition += Idle;
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == attackMask)
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            RandomPrticle(other.GetComponent<BaseAI>().ParticleSystem, ParticleSystem);
+
+        }
+    }
+
+    private void RandomPrticle(ParticleSystem particleSystem1, ParticleSystem particleSystem2)
+    {
+        UnityEngine.Random.Range(1, 2);
+    }
 }
