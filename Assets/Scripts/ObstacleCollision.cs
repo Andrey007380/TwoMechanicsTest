@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleCollision : CollisionAction
+public class ObstacleCollision : MonoBehaviour
 {
-    protected override void MakeAction(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (!other.GetComponent<ScaleKnife>()) return;
+        MakeAction(other);
+    }
+    
+    protected virtual void MakeAction(Collider other)
     {
         Destroy(other.gameObject);
-        //TODO: Make gameover restart
+        
+        Application.LoadLevel(Application.loadedLevel);
     }
 }

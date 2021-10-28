@@ -6,18 +6,18 @@ namespace PathCreation.Examples
     public class PinsMover : MonoBehaviour
     {
         private Touch _touch;
-        private Vector3 _moveToPoint;
-        public PathCreator pathCreator;
+        public PathCreator PathCreator;
+        private Camera _camera;
 
-        public Vector3 MoveToPoint { get => _moveToPoint; set => _moveToPoint = value; }
+        public Vector3 MoveToPoint { get; set; }
 
-       private void Start()
-        {
-            _touch = new Touch();
+        private void Start()
+       {
+           _camera = Camera.main;
+           _touch = new Touch();
+       }
 
-        }
-
-        private void LateUpdate()
+        private void Update()
         {
             if (Input.touchCount > 0)
             {
@@ -26,26 +26,19 @@ namespace PathCreation.Examples
                 {
                     DragPinToPoint();
                 }
-                return; 
             }
-            DragPinToPoint();
         }
 
         private void DragPinToPoint()
         {
-            Ray ray = Camera.main.ScreenPointToRay(_touch.position);
+            Ray ray = _camera.ScreenPointToRay(_touch.position);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit)) {
-
-                if (hit.collider.gameObject == gameObject)
-                {
-                    Vector3 worldPosition = hit.point;
-                    Vector3 nearestWorldPositionOnPath = pathCreator.path.GetPointAtDistance(pathCreator.path.GetClosestDistanceAlongPath(worldPosition));
-                    transform.position = nearestWorldPositionOnPath;
-                }
-                
-            }
+            if (!Physics.Raycast(ray, out hit)) return;
+            if (!hit.collider.gameObject) return;
+            Vector3 worldPosition = hit.point;
+            Vector3 nearestWorldPositionOnPath = PathCreator.path.GetPointAtDistance(PathCreator.path.GetClosestDistanceAlongPath(worldPosition));
+            transform.position = nearestWorldPositionOnPath;
         }
     } 
 }

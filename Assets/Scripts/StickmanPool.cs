@@ -31,16 +31,16 @@ public class StickmanPool : MonoBehaviour
     public void Start()
     {
           foreach (Pool pool in pools)
-        {
+          {
 
-            for (int i = 0; i < pool.size; i++)
-            {
-                GameObject obj = Instantiate(pool.prefab);
-                obj.SetActive(true);
-                availableObjcts.Enqueue(obj);
-            }
-            poolDictionary.Add(pool.tag, availableObjcts);
-        }
+              for (int i = 0; i < pool.size; i++)
+              {
+                  GameObject obj = Instantiate(pool.prefab);
+                  obj.SetActive(true);
+                  availableObjcts.Enqueue(obj);
+              }
+              poolDictionary.Add(pool.tag, availableObjcts);
+          }
     
     }
 
@@ -52,13 +52,13 @@ public class StickmanPool : MonoBehaviour
             return null;
         }
 
-        GameObject ObjectToSpawn = poolDictionary[tag].Dequeue();
-        ObjectToSpawn.SetActive(true);
-        ObjectToSpawn.transform.position = position;
-        ObjectToSpawn.transform.rotation = rotation;
+        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = position;
+        objectToSpawn.transform.rotation = rotation;
 
 
-        return ObjectToSpawn;
+        return objectToSpawn;
     }
     public void AddToPool(int tag, GameObject prefab)
     {

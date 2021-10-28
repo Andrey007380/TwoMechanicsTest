@@ -569,16 +569,9 @@ namespace DigitalRuby.Tween
     {
         private readonly Func<ITween<T>, T, T, float, T> lerpFunc;
 
-        private float currentTime;
-        private float duration;
         private Func<float, float> scaleFunc;
         private System.Action<ITween<T>> progressCallback;
         private System.Action<ITween<T>> completionCallback;
-        private TweenState state;
-
-        private T start;
-        private T end;
-        private T value;
 
         private ITween continueWith;
 
@@ -590,12 +583,12 @@ namespace DigitalRuby.Tween
         /// <summary>
         /// Gets the current time of the tween.
         /// </summary>
-        public float CurrentTime { get { return currentTime; } }
+        public float CurrentTime { get; private set; }
 
         /// <summary>
         /// Gets the duration of the tween.
         /// </summary>
-        public float Duration { get { return duration; } }
+        public float Duration { get; private set; }
 
         /// <summary>
         /// Delay before starting the tween
@@ -605,22 +598,22 @@ namespace DigitalRuby.Tween
         /// <summary>
         /// Gets the current state of the tween.
         /// </summary>
-        public TweenState State { get { return state; } }
+        public TweenState State { get; private set; }
 
         /// <summary>
         /// Gets the starting value of the tween.
         /// </summary>
-        public T StartValue { get { return start; } }
+        public T StartValue { get; private set; }
 
         /// <summary>
         /// Gets the ending value of the tween.
         /// </summary>
-        public T EndValue { get { return end; } }
+        public T EndValue { get; private set; }
 
         /// <summary>
         /// Gets the current value of the tween.
         /// </summary>
-        public T CurrentValue { get { return value; } }
+        public T CurrentValue { get; private set; }
 
         /// <summary>
         /// Time function - returns elapsed time for next frame
@@ -662,7 +655,7 @@ namespace DigitalRuby.Tween
         public Tween(Func<ITween<T>, T, T, float, T> lerpFunc)
         {
             this.lerpFunc = lerpFunc;
-            state = TweenState.Stopped;
+            State = TweenState.Stopped;
 
 #if IS_UNITY
 
@@ -688,13 +681,13 @@ namespace DigitalRuby.Tween
         public Tween<T> Setup(T start, T end, float duration, Func<float, float> scaleFunc, System.Action<ITween<T>> progress, System.Action<ITween<T>> completion = null)
         {
             scaleFunc = (scaleFunc ?? TweenScaleFunctions.Linear);
-            currentTime = 0;
-            this.duration = duration;
+            CurrentTime = 0;
+            this.Duration = duration;
             this.scaleFunc = scaleFunc;
             this.progressCallback = progress;
             this.completionCallback = completion;
-            this.start = start;
-            this.end = end;
+            this.StartValue = start;
+            this.EndValue = end;
 
             return this;
         }
@@ -704,12 +697,12 @@ namespace DigitalRuby.Tween
         /// </summary>
         public void Start()
         {
-            if (state != TweenState.Running)
+            if (State != TweenState.Running)
             {
-                if (duration <= 0.0f && Delay <= 0.0f)
+                if (Duration <= 0.0f && Delay <= 0.0f)
                 {
                     // complete immediately
-                    value = end;
+                    CurrentValue = EndValue;
                     if (progressCallback != null)
                     {
                         progressCallback(this);
@@ -721,7 +714,7 @@ namespace DigitalRuby.Tween
                     return;
                 }
 
-                state = TweenState.Running;
+                State = TweenState.Running;
                 UpdateValue();
             }
         }
@@ -731,9 +724,9 @@ namespace DigitalRuby.Tween
         /// </summary>
         public void Pause()
         {
-            if (state == TweenState.Running)
+            if (State == TweenState.Running)
             {
-                state = TweenState.Paused;
+                State = TweenState.Paused;
             }
         }
 
@@ -742,9 +735,9 @@ namespace DigitalRuby.Tween
         /// </summary>
         public void Resume()
         {
-            if (state == TweenState.Paused)
+            if (State == TweenState.Paused)
             {
-                state = TweenState.Running;
+                State = TweenState.Running;
             }
         }
 
@@ -754,12 +747,12 @@ namespace DigitalRuby.Tween
         /// <param name="stopBehavior">The behavior to use to handle the stop.</param>
         public void Stop(TweenStopBehavior stopBehavior)
         {
-            if (state != TweenState.Stopped)
+            if (State != TweenState.Stopped)
             {
-                state = TweenState.Stopped;
+                State = TweenState.Stopped;
                 if (stopBehavior == TweenStopBehavior.Complete)
                 {
-                    currentTime = duration;
+                    CurrentTime = Duration;
                     UpdateValue();
                     if (completionCallback != null)
                     {
@@ -793,12 +786,12 @@ namespace DigitalRuby.Tween
         /// <returns>True if done, false if not</returns>
         public bool Update(float elapsedTime)
         {
-            if (state == TweenState.Running)
+            if (State == TweenState.Running)
             {
                 if (Delay > 0.0f)
                 {
-                    currentTime += elapsedTime;
-                    if (currentTime <= Delay)
+                    CurrentTime += elapsedTime;
+                    if (CurrentTime <= Delay)
                     {
                         // delay is not over yet
                         return false;
@@ -806,16 +799,16 @@ namespace DigitalRuby.Tween
                     else
                     {
                         // set to left-over time beyond delay
-                        currentTime = (currentTime - Delay);
+                        CurrentTime = (CurrentTime - Delay);
                         Delay = 0.0f;
                     }
                 }
                 else
                 {
-                    currentTime += elapsedTime;
+                    CurrentTime += elapsedTime;
                 }
 
-                if (currentTime >= duration)
+                if (CurrentTime >= Duration)
                 {
                     Stop(TweenStopBehavior.Complete);
                     return true;
@@ -826,7 +819,7 @@ namespace DigitalRuby.Tween
                     return false;
                 }
             }
-            return (state == TweenState.Stopped);
+            return (State == TweenState.Stopped);
         }
 
         /// <summary>
@@ -864,8 +857,8 @@ namespace DigitalRuby.Tween
 
 #endif
 
-                CurrentProgress = scaleFunc(currentTime / duration);
-                value = lerpFunc(this, start, end, CurrentProgress);
+                CurrentProgress = scaleFunc(CurrentTime / Duration);
+                CurrentValue = lerpFunc(this, StartValue, EndValue, CurrentProgress);
                 if (progressCallback != null)
                 {
                     progressCallback.Invoke(this);
