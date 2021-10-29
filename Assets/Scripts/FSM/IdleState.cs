@@ -1,21 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace FSM
-{
     public class IdleState : State
     {
         private Animator _animator;
+
         public IdleState(AIStateMachine baseAI) : base(baseAI)
         {
-            _animator = baseAI._animator;
+            _animator = baseAI.animator;
+        }
+        
+        public override void Enter()
+        {
+            base.Enter();
         }
 
-        public override IEnumerator Execute()
+        public override void Execute()
         {
+            base.Execute();
             _animator.Play("Idle");
-            yield return new WaitForSeconds(2f);
-
+            if (_baseAI.isActive == true)
+            {
+                _baseAI.ChangeState(new AttackState(_baseAI));
+               
+            }
+        }
+        public override void Exit()
+        {
+            base.Exit();
+            
         }
     }
-}

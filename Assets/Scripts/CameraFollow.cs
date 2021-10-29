@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private List<GameObject> _targets;
+    [SerializeField] private List<GameObject> _targets;
     private Vector3 _cameraOffset;
     private Transform _cameraRotation;
 
-    private float _minOffset = 30f;
-    private float _maxOffset = 20f;
+    private float _minOffset = 40f;
+    private float _maxOffset = 10f;
     private float _xAngle = 90f;
     private bool _isActive = false;
 

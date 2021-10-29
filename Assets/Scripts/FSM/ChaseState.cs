@@ -1,9 +1,8 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace FSM
-{
     public class ChaseState : State
     {
         private NavMeshAgent _meshAgent;
@@ -11,30 +10,34 @@ namespace FSM
 
         public ChaseState(AIStateMachine baseAI) : base(baseAI)
         {
-            _meshAgent = baseAI._meshAgent;
-            _animator = baseAI._animator;
+            _meshAgent = baseAI.meshAgent;
+            _animator = baseAI.animator;
         }
 
-        public override IEnumerator Execute()
+        public override void Enter()
         {
-            while (true)
-            {
-                _meshAgent.SetDestination(_baseAI.BasePoint.position);
+            base.Enter();
+        }
+
+        public override void Execute()
+        {
+            base.Execute();
+                _meshAgent.SetDestination(_baseAI.basePoint.position);
                 _animator.Play("Run");
+                
+                if (_meshAgent.pathPending)return;
+                
+                if (_meshAgent.remainingDistance > _meshAgent.stoppingDistance)return;
+                
+                if (_meshAgent.hasPath && _meshAgent.velocity.sqrMagnitude != 0f)return;
+                
+                if (_meshAgent.pathStatus != NavMeshPathStatus.PathComplete) return;
+                
+                    _baseAI.ChangeState(new IdleState(_baseAI));
+        }
 
-                yield return null;
-
-                if (_meshAgent.pathPending)
-                    continue;
-                if (_meshAgent.remainingDistance > _meshAgent.stoppingDistance)
-                    continue;
-                if (_meshAgent.hasPath && _meshAgent.velocity.sqrMagnitude != 0f)
-                    continue;
-                if (_meshAgent.pathStatus != NavMeshPathStatus.PathComplete)
-                    continue;
-                _baseAI.ApplyState(new IdleState(_baseAI));
-                break;
-            }
+        public override void Exit()
+        {
+            base.Exit();
         }
     }
-}

@@ -1,9 +1,8 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace FSM
-{
     public class AttackState : State
     {
         private LayerMask _attackMask;
@@ -12,32 +11,39 @@ namespace FSM
         private Animator _animator;
         private float _enemyDetection;
         private Transform _basePoint;
+        private int _numColliders = 20;
+        
 
         public AttackState(AIStateMachine baseAI) : base(baseAI)
         {
-            _attackMask = baseAI._attackMask;
-            _targetInRadius = baseAI.TargetInRadius;
-            _meshAgent = baseAI._meshAgent;
-            _animator = baseAI._animator;
-            _enemyDetection = baseAI._enemyDetection;
-            _basePoint = baseAI.BasePoint;
+            _attackMask = baseAI.attackMask;
+            _meshAgent = baseAI.meshAgent;
+            _animator = baseAI.animator;
+            _enemyDetection = baseAI.enemyDetection;
+            _basePoint = baseAI.basePoint;
         }
 
-        public override IEnumerator Execute()
+        public override void Enter()
         {
-            yield return null;
-            while (true)
-            {
-                _targetInRadius = Physics.OverlapSphere(_meshAgent.transform.position, _enemyDetection, _attackMask);
+            base.Enter();
+            _meshAgent.stoppingDistance = 0;
+            
+        }
+
+        public override void Execute()
+        {
+            base.Execute();
+           
+            
+            _targetInRadius =  Physics.OverlapSphere(_meshAgent.transform.position, _enemyDetection, _attackMask);
                 if (_targetInRadius.Length != 0){
                     _animator.Play("Run");
-                    _meshAgent.SetDestination(GetNewTarget(_targetInRadius).position);
+                        _meshAgent.SetDestination(GetNewTarget(_targetInRadius).position);
                 }
                 else
                 {
-                    _meshAgent.SetDestination(_basePoint.position);
+                    _baseAI.ChangeState(new IdleState(_baseAI));
                 }
-
                 Transform GetNewTarget(Collider[] colliders)
                 {
                     Transform bestTarget = null;
@@ -56,9 +62,13 @@ namespace FSM
                     }
                     return bestTarget;
                 }
-                break;
-            }
         }
-    
+
+        public override void Exit()
+        {
+            base.Exit();
+        }
+
+         
+
     }
-}

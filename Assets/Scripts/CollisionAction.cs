@@ -8,13 +8,13 @@ public class CollisionAction : ObstacleCollision
     public delegate void DestroyDelegate();
     public static event DestroyDelegate OnAllObjectsDestroyed;
     
-    public delegate void AllObjectsDestroyedDelegate(GameObject InstantiatedGameobject);
+    public delegate void AllObjectsDestroyedDelegate(GameObject GameobjectToRemove);
     public static event AllObjectsDestroyedDelegate OnEmptyAvailableObject;
     
 
     [SerializeField]private List<GameObject> _listofavailableobjects = new List<GameObject>();
 
-    public delegate void InstantiateDelegate(GameObject InstantiatedGameobject);
+    public delegate void InstantiateDelegate(GameObject instantiatedGameObject);
     public static event InstantiateDelegate OnInstantiate;
     
     
@@ -35,7 +35,7 @@ public class CollisionAction : ObstacleCollision
         OnEmptyAvailableObject?.Invoke(gameObject);
         
         if(_listofavailableobjects.Count == 0)
-            OnAllObjectsDestroyed?.Invoke();
+            OnAllObjectsDestroyed.Invoke();
         
         Destroy(gameObject);
     }

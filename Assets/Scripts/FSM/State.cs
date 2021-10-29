@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using FSM;
-using UnityEngine;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-public abstract class State
-{
-    protected readonly AIStateMachine _baseAI;
-
-    public State(AIStateMachine baseAI)
+    public abstract class State
     {
-        _baseAI = baseAI;
+        protected readonly AIStateMachine _baseAI;
+
+        public State(AIStateMachine baseAI)
+        {
+            _baseAI = baseAI;
+        }
+
+        public virtual void Enter(){}
+        public virtual void Execute() { }
+        public virtual void Exit(){}
+
+
     }
 
-    public virtual IEnumerator Execute() { yield break; }
-
-
-}

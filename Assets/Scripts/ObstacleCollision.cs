@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObstacleCollision : MonoBehaviour
 {
-    protected virtual void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (!other.GetComponent<ScaleKnife>()) return;
         MakeAction(other);
@@ -11,7 +12,6 @@ public class ObstacleCollision : MonoBehaviour
     protected virtual void MakeAction(Collider other)
     {
         Destroy(other.gameObject);
-        
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
