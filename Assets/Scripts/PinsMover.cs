@@ -1,4 +1,6 @@
+using System;
 using PathCreation;
+using UnityEditor;
 using UnityEngine;
 
 namespace PathCreation.Examples 
@@ -19,6 +21,11 @@ namespace PathCreation.Examples
         private void Update()
         {
             if (Input.touchCount <= 0) return;
+            TouchDrag();
+        }
+
+        private void TouchDrag()
+        {
             _touch = Input.touches[0];
             if (_touch.phase != TouchPhase.Moved) return;
             Ray ray = _camera.ScreenPointToRay(_touch.position);
@@ -33,5 +40,13 @@ namespace PathCreation.Examples
             }
         }
         
+        private void OnMouseDrag()
+        {
+            Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, _camera.WorldToScreenPoint(gameObject.transform.position).z);
+            Vector3 curPosition =_camera.ScreenToWorldPoint(curScreenPoint);
+            
+            Vector3 nearestWorldPositionOnPath = pathCreator.path.GetPointAtDistance(pathCreator.path.GetClosestDistanceAlongPath(curPosition));
+            transform.position = nearestWorldPositionOnPath;
+        }
     } 
 }
